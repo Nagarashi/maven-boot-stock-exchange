@@ -2,10 +2,10 @@ package com.switchfully.maven.exchange.domain;
 
 import java.math.BigDecimal;
 
-public class StockPrice {
+public final class StockPrice {
 
-    private BigDecimal price;
-    private StockCurrency currency;
+    private final BigDecimal price;
+    private final StockCurrency currency;
 
     public StockPrice(BigDecimal price, StockCurrency currency) {
         this.price = price;
