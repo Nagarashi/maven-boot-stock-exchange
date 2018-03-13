@@ -1,9 +1,7 @@
 package com.switchfully.maven.exchange.api;
 
 import com.switchfully.maven.exchange.domain.Stock;
-import com.switchfully.maven.exchange.domain.StockCurrency;
 import com.switchfully.maven.exchange.domain.StockPrice;
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -12,14 +10,15 @@ import static com.switchfully.maven.exchange.domain.StockCurrency.EUR;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.*;
 
-public class StockDtoTest {
+public class StockMapperTest {
 
     @Test
-    public void toStockDto_givenEnrichedStock_thenMapAllDataToStockDto()  {
+    public void mapToDto_givenEnrichedStock_thenMapAllDataToStockDto()  {
         Stock stock = new Stock("ABC", "AyBeCe");
         stock.setPrice(new StockPrice(new BigDecimal(10), EUR));
 
-        StockDto stockDto = StockDto.toStockDto(stock);
+        StockMapper stockMapper = new StockMapper();
+        StockDto stockDto = stockMapper.mapToDto(stock);
 
         assertThat(stockDto.getId()).isEqualTo("ABC");
         assertThat(stockDto.getName()).isEqualTo("AyBeCe");
@@ -28,10 +27,11 @@ public class StockDtoTest {
     }
 
     @Test
-    public void toStockDto_givenUnknownStockWithoutPrice_thenMapIdAndNameToStockDto()  {
+    public void mapToDto_givenUnknownStockWithoutPrice_thenMapIdAndNameToStockDto()  {
         Stock stock = new Stock("ABC", "AyBeCe");
 
-        StockDto stockDto = StockDto.toStockDto(stock);
+        StockMapper stockMapper = new StockMapper();
+        StockDto stockDto = stockMapper.mapToDto(stock);
 
         assertThat(stockDto.getId()).isEqualTo("ABC");
         assertThat(stockDto.getName()).isEqualTo("AyBeCe");

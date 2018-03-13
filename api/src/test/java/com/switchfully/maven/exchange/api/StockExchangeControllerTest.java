@@ -26,15 +26,27 @@ public class StockExchangeControllerTest {
      * applied Inversion of Control - Constructor Dependency Injection
      * on the StockExchangeController
      */
+
     @Mock
     private StockService stockService;
+
+    /**
+     * Same for the StockMapper
+     */
+    @Mock
+    private StockMapper stockMapper;
 
     @Test
     public void getStock_givenAStockId_thenReturnStock() {
         // GIVEN
-        StockExchangeController controller = new StockExchangeController(stockService);
+        StockExchangeController controller = new StockExchangeController(stockService, stockMapper);
+
+        Stock enrichedStock = createEnrichedStock("ABC", "AyBeCe", new StockPrice(new BigDecimal(10), EUR));
         Mockito.when(stockService.getStock("ABC"))
-                .thenReturn(createEnrichedStock("ABC", "AyBeCe", new StockPrice(new BigDecimal(10), EUR)));
+                .thenReturn(enrichedStock);
+        Mockito.when(stockMapper.mapToDto(enrichedStock))
+                .thenReturn(new StockDto("ABC", "AyBeCe", new BigDecimal(10), EUR.getLabel()));
+
 
         // WHEN
         StockDto stockDto = controller.getStock("ABC");

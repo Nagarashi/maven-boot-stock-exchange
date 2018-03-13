@@ -2,13 +2,14 @@ package com.switchfully.maven.exchange.cli;
 
 import com.switchfully.maven.exchange.api.StockDto;
 import com.switchfully.maven.exchange.api.StockExchangeController;
+import com.switchfully.maven.exchange.api.StockMapper;
 import com.switchfully.maven.exchange.service.StockService;
 
 public class MyCLI {
 
     public static void main(String[] args) {
         if(args.length == 1) {
-            StockExchangeController controller = new StockExchangeController(new StockService());
+            StockExchangeController controller = new StockExchangeController(new StockService(), new StockMapper());
             StockDto stockDto = controller.getStock(args[0]);
             printStockDto(stockDto);
         } else {

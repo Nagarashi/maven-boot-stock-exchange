@@ -6,9 +6,11 @@ import com.switchfully.maven.exchange.service.StockService;
 public class StockExchangeController {
 
     private StockService stockService;
+    private StockMapper stockMapper;
 
-    public StockExchangeController(StockService stockService) {
+    public StockExchangeController(StockService stockService, StockMapper stockMapper) {
         this.stockService = stockService;
+        this.stockMapper = stockMapper;
     }
 
     /**
@@ -18,7 +20,7 @@ public class StockExchangeController {
      */
     public StockDto getStock(String stockId) {
         Stock foundStock = stockService.getStock(stockId);
-        return StockDto.toStockDto(foundStock);
+        return stockMapper.mapToDto(foundStock);
     }
 
 }
