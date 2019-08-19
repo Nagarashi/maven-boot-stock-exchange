@@ -3,19 +3,16 @@ package com.switchfully.maven.exchange.api;
 import com.switchfully.maven.exchange.domain.Stock;
 import com.switchfully.maven.exchange.domain.StockPrice;
 import com.switchfully.maven.exchange.service.StockService;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import java.math.BigDecimal;
 
 import static com.switchfully.maven.exchange.domain.StockCurrency.EUR;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(MockitoJUnitRunner.class)
-public class StockExchangeControllerTest {
+class StockExchangeControllerTest {
 
     /**
      * We mock the StockService.
@@ -25,20 +22,14 @@ public class StockExchangeControllerTest {
      * We can mock the StockService because we
      * applied Inversion of Control - Constructor Dependency Injection
      * on the StockExchangeController
+     *
+     * Same goes for the StockMapper
      */
-
-    @Mock
-    private StockService stockService;
-
-    /**
-     * Same for the StockMapper
-     */
-    @Mock
-    private StockMapper stockMapper;
-
     @Test
-    public void getStock_givenAStockId_thenReturnStock() {
+    void getStock_givenAStockId_thenReturnStock() {
         // GIVEN
+        StockMapper stockMapper = Mockito.mock(StockMapper.class);
+        StockService stockService = Mockito.mock(StockService.class);
         StockExchangeController controller = new StockExchangeController(stockService, stockMapper);
 
         Stock enrichedStock = createEnrichedStock("ABC", "AyBeCe", new StockPrice(new BigDecimal(10), EUR));

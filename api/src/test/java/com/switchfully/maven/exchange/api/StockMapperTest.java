@@ -2,18 +2,17 @@ package com.switchfully.maven.exchange.api;
 
 import com.switchfully.maven.exchange.domain.Stock;
 import com.switchfully.maven.exchange.domain.StockPrice;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
 import static com.switchfully.maven.exchange.domain.StockCurrency.EUR;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
-public class StockMapperTest {
+class StockMapperTest {
 
     @Test
-    public void mapToDto_givenEnrichedStock_thenMapAllDataToStockDto()  {
+    void mapToDto_givenEnrichedStock_thenMapAllDataToStockDto()  {
         Stock stock = new Stock("ABC", "AyBeCe");
         stock.setPrice(new StockPrice(new BigDecimal(10), EUR));
 
@@ -27,7 +26,7 @@ public class StockMapperTest {
     }
 
     @Test
-    public void mapToDto_givenUnknownStockWithoutPrice_thenMapIdAndNameToStockDto()  {
+    void mapToDto_givenUnknownStockWithoutPrice_thenMapIdAndNameToStockDto()  {
         Stock stock = new Stock("ABC", "AyBeCe");
 
         StockMapper stockMapper = new StockMapper();

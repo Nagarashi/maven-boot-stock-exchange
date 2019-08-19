@@ -1,18 +1,15 @@
 package com.switchfully.maven.exchange.domain;
 
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class StockRepositoryTest {
-
-    @Rule
-    public ExpectedException expectedException = ExpectedException.none();
+class StockRepositoryTest {
 
     @Test
-    public void getStockInformation_givenAExistingStockId_thenReturnStock() {
+    void getStockInformation_givenAExistingStockId_thenReturnStock() {
         // GIVEN & WHEN
         Stock actualStock = StockRepository.getStockInformation("AA");
 
@@ -23,13 +20,14 @@ public class StockRepositoryTest {
     }
 
     @Test
-    public void getStockInformation_givenAUnknownStockId_thenThrowException() {
-        // THEN (expected exceptions need to be at the top of the test-method)
-        expectedException.expect(IllegalArgumentException.class);
-        expectedException.expectMessage("No stock found for id:XXX");
-
+    void getStockInformation_givenAUnknownStockId_thenThrowException() {
         // GIVEN & WHEN
-        StockRepository.getStockInformation("XXX");
+        String expectedMessage = Assertions.assertThrows(IllegalArgumentException.class,
+                () -> StockRepository.getStockInformation("XXX"))
+                .getMessage();
+
+        // THEN
+        assertThat(expectedMessage).isEqualTo("No stock found for id:XXX");
     }
 
 }

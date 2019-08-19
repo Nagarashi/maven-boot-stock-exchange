@@ -1,19 +1,14 @@
 package com.switchfully.maven.exchange.service;
 
 import com.switchfully.maven.exchange.domain.Stock;
-import com.switchfully.maven.exchange.domain.StockCurrency;
-import org.assertj.core.api.Assertions;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
 import static com.switchfully.maven.exchange.domain.StockCurrency.EUR;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
-public class StockServiceTest {
+class StockServiceTest {
 
     /**
      * We can't mock the ExternalStockInformationService or StockRepository since no Constructor Dependency Injection
@@ -26,7 +21,7 @@ public class StockServiceTest {
      */
 
     @Test
-    public void getStock_givenAExistingStockId_thenReturnStockEnrichedWithPrice() {
+    void getStock_givenAExistingStockId_thenReturnStockEnrichedWithPrice() {
         // GIVEN
         StockService stockService = new StockService();
 
@@ -42,7 +37,7 @@ public class StockServiceTest {
     }
 
     @Test
-    public void getStock_givenAUnknownStockId_thenReturnStockWithUnknownNameAndNoPrice() {
+    void getStock_givenAUnknownStockId_thenReturnStockWithUnknownNameAndNoPrice() {
         // GIVEN
         StockService stockService = new StockService();
 
