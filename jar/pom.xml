@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service</artifactId>
+    <artifactId>jar</artifactId>
 
     <parent>
         <groupId>com.switchfully.springboot.exchange</groupId>
@@ -20,12 +20,17 @@
 
         <dependency>
             <groupId>com.switchfully.springboot.exchange</groupId>
-            <artifactId>domain</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.switchfully.springboot.exchange</groupId>
-            <artifactId>interfaces</artifactId>
+            <artifactId>api</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

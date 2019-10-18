@@ -1,3 +1,4 @@
+/*
 package com.switchfully.maven.exchange.service;
 
 import com.switchfully.maven.exchange.domain.Stock;
@@ -10,7 +11,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class StockServiceTest {
 
-    /**
+    */
+/**
      * We can't mock the ExternalStockInformationService or StockRepository since no Constructor Dependency Injection
      * is used for the StockService (and both offer a static method to use).
      * Therefore, if the ExternalStockInformationService is broken, these tests might fail.
@@ -18,7 +20,8 @@ class StockServiceTest {
      * This test can be described as an integration test, rather than a unit test,
      * since it is not only testing the StockService but also the integration
      * with the ExternalStockInformationService en StockRepository
-     */
+     *//*
+
 
     @Test
     void getStock_givenAExistingStockId_thenReturnStockEnrichedWithPrice() {
@@ -51,3 +54,4 @@ class StockServiceTest {
     }
 
 }
+*/

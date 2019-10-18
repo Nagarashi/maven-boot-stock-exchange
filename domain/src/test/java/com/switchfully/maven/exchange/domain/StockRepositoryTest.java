@@ -1,3 +1,4 @@
+/*
 package com.switchfully.maven.exchange.domain;
 
 
@@ -31,3 +32,4 @@ class StockRepositoryTest {
     }
 
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package com.switchfully.maven.exchange.api;
 
 import com.switchfully.maven.exchange.domain.Stock;
@@ -14,7 +15,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class StockExchangeControllerTest {
 
-    /**
+    */
+/**
      * We mock the StockService.
      * The StockService can be broken,
      * it will not affect these test due to mocking.
@@ -24,7 +26,8 @@ class StockExchangeControllerTest {
      * on the StockExchangeController
      *
      * Same goes for the StockMapper
-     */
+     *//*
+
     @Test
     void getStock_givenAStockId_thenReturnStock() {
         // GIVEN
@@ -56,3 +59,4 @@ class StockExchangeControllerTest {
     }
 
 }
+*/

@@ -1,5 +1,7 @@
 package com.switchfully.maven.exchange.api;
 
+import com.switchfully.maven.exchange.domain.Stock;
+
 import java.math.BigDecimal;
 
 public class StockDto {
@@ -14,6 +16,14 @@ public class StockDto {
         this.name = name;
         this.price = price;
         this.currency = currency;
+    }
+
+    static StockDto toStockDto(Stock stock) {
+        return new StockDto(
+                stock.getId(),
+                stock.getName(),
+                stock.getPrice() != null ? stock.getPrice().getPrice() : new BigDecimal(0),
+                stock.getPrice() != null ? stock.getPrice().getCurrency().getLabel() : "Unknown");
     }
 
     public String getId() {
